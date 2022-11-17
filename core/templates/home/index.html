@@ -1,0 +1,93 @@
+{% extends "base/base.html" %}
+{% block title %}Home{% endblock title %}
+{% block tables %}
+
+{% for category in category %}
+<li>
+  <a href="category/{{category}}" class="dropdown-item">{{category}}</a>
+</li>
+{% endfor %}
+
+{% endblock tables %}
+{% block notifications %}
+{% if history != 0 %}
+{% for message in historys %}
+<a href="#" class="dropdown-item">
+  <h6 class="fw-normal mb-0">{{message.message}}</h6>
+  <small>{{message.date}}</small>
+</a>
+<hr class="dropdown-divider">
+{% endfor %}
+{% else %}
+<p class="text-center">Notifications Empty</p>
+{% endif %}
+{% endblock notifications %}
+
+{% block body %}
+<!-- Start -->
+<div class="container-fluid pt-4 px-4">
+  <div class="row g-4">
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <div class="ms-3">
+          <p class="mb-2">Total Category</p>
+          <h6 class="mb-0">{{totalcategory}}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <div class="ms-3">
+          <p class="mb-2">Total Email</p>
+          <h6 class="mb-0">{{len}}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <div class="ms-3">
+          <p class="mb-2">Total Sent Email</p>
+          <h6 class="mb-0">{{history}}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <div class="ms-3">
+          <p class="mb-2">Total User</p>
+          <h6 class="mb-0">{{countuser}}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="card add_email_table overflow-auto">
+        <div class="card-body">
+          <h5 class="card-title">All List <span>| email </span></h5>
+          <table class="table table-borderless datatable">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Email</th>
+                <th scope="col">Category</th>
+                <th style="text-align: center;" scope="col">Author</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for emaillist in email %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{emaillist.email}}</td>
+                <td>{{emaillist.category}}</td>
+                <td style="text-align:center;"> shishir </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

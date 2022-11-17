@@ -1,0 +1,141 @@
+*::-webkit-scrollbar {
+    display: none;
+}
+
+.clear {
+    clear: both;
+}
+
+/* send box  */
+button.btn_ {
+    width: 130px;
+    margin-top: -20px;
+}
+
+button.btn_ a {
+    color: white;
+}
+
+select.dataTable-selector {
+    outline: none;
+    border: 1px solid #535353;
+    margin-right: 8px;
+    border-radius: 5px;
+}
+
+input.dataTable-input {
+    outline: none;
+    border: 1px solid #cccccc;
+    width: 25em;
+    border-radius: 5px;
+}
+
+
+
+.card.add_email_table.overflow-auto {
+    background: #191C24 !important;
+}
+
+select.dataTable-selector {
+    background: #191C24 !important;
+    color: white;
+}
+
+.dataTable-search input {
+    background: #191C24 !important;
+    border: 1px solid #484848;
+    border-radius: 5px;
+    color: white;
+}
+
+table.table.table-borderless.datatable.dataTable-table {
+    color: #d9d9d9;
+    font-weight: 400;
+}
+
+.dataTable-table>thead>tr>th {
+    border-bottom: 1px solid #434343 !important;
+}
+
+.dataTable-wrapper.no-footer .dataTable-container {
+    border-bottom: 1px solid #343434;
+}
+
+.note-editor.note-frame.card {
+    border: 2px solid #0c0c0c;
+    outline: none;
+}
+
+.note-editing-area {
+    background: #000000;
+}
+
+.note-toolbar.card-header {
+    background: #191C24;
+}
+
+.note-resizebar {
+    background: black;
+}
+
+button.btn_ a {
+    text-decoration: none;
+    color: white;
+}
+
+input#from:focus {
+    box-shadow: none;
+    border: none;
+}
+
+select.form-select.form-select-md:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.btn_ {
+    width: 150px;
+}
+
+/* summary code  */
+a.dropdown-item h1 {
+    color: black;
+}
+
+a.dropdown-item h2 {
+    color: black;
+}
+
+a.dropdown-item h3 {
+    color: black;
+}
+
+a.dropdown-item h4 {
+    color: black;
+}
+
+a.dropdown-item h5 {
+    color: black;
+}
+
+a.dropdown-item h6 {
+    color: black;
+}
+
+a.dropdown-item h6 {
+    color: #959595;
+}
+
+/* summary end  */
+
+@media only screen and (max-width: 600px) {
+    input.dataTable-input {
+        width: 12em;
+    }
+
+    a.btn.mb_ {
+        margin-bottom: 5px;
+        float: left;
+        width: 60px;
+    }
+}

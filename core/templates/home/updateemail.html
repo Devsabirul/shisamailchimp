@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+{% block title %}Add Email{% endblock title %}
+{% block tables %}
+
+{% for category in category %}
+  <li>
+    <a href="{{category}}" class="dropdown-item">{{category}}</a>
+  </li>
+{% endfor %}
+
+{% endblock tables %}
+{% block notifications %}
+  {% if history != 0 %}
+  {% for message in historys %}
+  <a href="#" class="dropdown-item">
+    <h6 class="fw-normal mb-0">{{message.message}}</h6>
+    <small>{{message.date}}</small>
+  </a>
+  <hr class="dropdown-divider">
+  {% endfor %}
+  {% else %}
+  <p class="text-center">Notifications Empty</p>
+{% endif %}
+{% endblock notifications %}
+
+{% block body %}
+<div class="container-fluid pt-4 px-4">
+
+    <div class="row mt-5">
+        <div class="col-12">
+          <div class="card mb-2 add_email_table overflow-auto">
+            <div class="card-body">
+              <h5 class="card-title mb-2">Update Email</h5>
+              <form action="" method="post">
+                {% csrf_token %}
+                <div class="col-lg-8">
+                  {{form}}
+                </div>
+                <button type="Submit" class="btn btn-success ml-2">Save Change</button>
+                <button type="Submit" class="btn btn-danger mt-1 btn_ ml-2"><a href="/tables">Cancel</a></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock body %}

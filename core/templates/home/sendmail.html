@@ -1,0 +1,64 @@
+{% extends 'base/base.html' %}
+{% block title %}Send Email{% endblock title %}
+{% block tables %}
+
+{% for category in category %}
+  <li>
+    <a href="category/{{category}}" class="dropdown-item">{{category}}</a>
+  </li>
+{% endfor %}
+
+{% endblock tables %}
+{% block body %}
+<!-- Form Start -->
+<div class="container-fluid pt-4 px-4">
+  <div class="row g-4">
+    <div class="col-sm-12">
+      <div class="bg-secondary rounded h-100 p-4">
+        <h5 class="mb-4" style="font-weight: 400;">Design the content for your email</h5>
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="from" class="form-label">From</label>
+            <input name="from" type="email" value="devsabirul8080@gmail.com" class="form-control" id="from"
+              aria-describedby="emailHelp" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="to" class="form-label">To</label>
+            <select name="to" class="form-select form-select-md mb-3" aria-label=".form-select-sm example">
+              {% for category in category %}
+                <option value="{{category}}">{{category}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="from" class="form-label">Email Subject</label>
+            <input type="text" class="form-control" name='subject' id="from" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="from" class="form-label">Email Message body</label>
+            <textarea name="body" id="summernote" cols="30" rows="10"></textarea>
+          </div>
+          <button type="submit" class="btn btn_ btn-success">Send</button>
+          <button class="ml-1 btn btn-light btn_">
+            <a  href="/">Cancel</a>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Form End -->
+
+
+{% block script %}
+<script>
+  $('#summernote').summernote({
+    placeholder: '',
+    tabsize: 2,
+    height: 400
+  });
+</script>
+{% endblock script %}
+{% endblock body %}
