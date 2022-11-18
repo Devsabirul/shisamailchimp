@@ -1,5 +1,20 @@
 {% extends 'base/base.html' %}
 {% block title %}Send Email{% endblock title %}
+
+{% block notifications %}
+  {% if history != 0 %}
+  {% for message in historys %}
+  <a href="#" class="dropdown-item">
+    <h6 class="fw-normal mb-0">{{message.message}}</h6>
+    <small>{{message.date}}</small>
+  </a>
+  <hr class="dropdown-divider">
+  {% endfor %}
+  {% else %}
+  <p class="text-center">Notifications Empty</p>
+  {% endif %}
+{% endblock notifications %}
+
 {% block tables %}
 
 {% for category in category %}
@@ -9,6 +24,7 @@
 {% endfor %}
 
 {% endblock tables %}
+
 {% block body %}
 <!-- Form Start -->
 <div class="container-fluid pt-4 px-4">
