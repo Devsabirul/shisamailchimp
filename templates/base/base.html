@@ -58,7 +58,6 @@
         </div>
         <!-- Spinner End -->
 
-
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
@@ -67,15 +66,14 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle"
-                            src="https://scontent.fdac24-1.fna.fbcdn.net/v/t39.30808-1/207303532_1035177973954135_4850843630160789261_n.jpg?stp=c0.0.160.160a_dst-jpg_p160x160&_nc_cat=109&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeHZ1Mt4ZUdlbc2qD8pXkpXPw1yY_APj7d3DXJj8A-Pt3WVhQwT6z2zEjHpx3DCYmlJa1hJKgKvr7lBYdRnBKQl6&_nc_ohc=iB0IyPAEJaYAX9kqZhm&_nc_ht=scontent.fdac24-1.fna&oh=00_AfC2vrkkhzCeoOteCmzRhG-8JY5Q2xtH2l9gpj5YoApW6w&oe=637BAA7E"
-                            alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="{% static 'core/assets/img/testimonial-2.jpg' %}" alt=""
+                            style="width: 40px; height: 40px;">
                         <div
                             class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                         </div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Shishir Islam</h6>
+                        <h6 class="mb-0">{{request.user.first_name}}</h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -119,46 +117,10 @@
                 </form>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <a href="https://gmail.com/" target="_blank" class="nav-link ">
                             <i class="fa fa-envelope me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">Message</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="https://d2qp0siotla746.cloudfront.net/img/use-cases/profile-picture/template_3.jpg" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="https://d2qp0siotla746.cloudfront.net/img/use-cases/profile-picture/template_3.jpg" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="https://d2qp0siotla746.cloudfront.net/img/use-cases/profile-picture/template_3.jpg" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
-                        </div>
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -166,20 +128,26 @@
                             <span class="d-none d-lg-inline-flex">Notificatin</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            {% block notifications %}{% endblock notifications %}
-                            <a href="/history" class="dropdown-item text-center">See all notifications</a>
+                            <div class="notifications">
+                                {% block notifications %}{% endblock notifications %}
+                            </div>
+
+                            <a href="{% url 'history' %}" class="hr dropdown-item text-center">See all notifications</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2"
-                                src="https://scontent.fdac24-1.fna.fbcdn.net/v/t39.30808-1/207303532_1035177973954135_4850843630160789261_n.jpg?stp=c0.0.160.160a_dst-jpg_p160x160&_nc_cat=109&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeHZ1Mt4ZUdlbc2qD8pXkpXPw1yY_APj7d3DXJj8A-Pt3WVhQwT6z2zEjHpx3DCYmlJa1hJKgKvr7lBYdRnBKQl6&_nc_ohc=iB0IyPAEJaYAX9kqZhm&_nc_ht=scontent.fdac24-1.fna&oh=00_AfC2vrkkhzCeoOteCmzRhG-8JY5Q2xtH2l9gpj5YoApW6w&oe=637BAA7E"
+                            <img class="rounded-circle me-lg-2" src="{% static 'core/assets/img/testimonial-2.jpg' %}"
                                 alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Shishir Islam</span>
+                            <span class="d-none d-lg-inline-flex">{{request.user.first_name}}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
+
+                            <a href="#" data-toggle="modal" data-target="#profile_info_view" class="dropdown-item">My
+                                Profile</a>
+                            <a href="#" data-toggle="modal" data-target="#updateuserinfo" class="dropdown-item">Update User Info</a>
+                            <a href="#" data-toggle="modal" data-target="#changepassword" class="dropdown-item">Change Password</a>
+                            
                             <a href="signout" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
@@ -206,6 +174,92 @@
         </div>
         <!-- Content End -->
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="profile_info_view" tabindex="-1" role="dialog" aria-labelledby="profile_info_viewLabel"
+        aria-hidden="true" style="background-color: #191c2487;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: #191C24;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profile_info_viewLabel">Profile Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>you can add profile information if you want.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--User Info Modal -->
+    <div class="modal fade" id="updateuserinfo" tabindex="-1" role="dialog" aria-labelledby="updateuserinfoLabel"
+        aria-hidden="true" style="background-color: #191c2487;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: #191C24;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateuserinfoLabel">Update user information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form class="ml-3" method="post" action="{% url 'update_user' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="username" value="{{request.user.username}}" name="username" disabled>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="name" value="{{request.user.first_name}}" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="email" value="{{request.user.email}}" name="email" required>
+                            </div>
+                            <button type="submit" class="btn btn-sm btn-primary">change save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--Change Password Modal -->
+    <div class="modal fade" id="changepassword" tabindex="-1" role="dialog" aria-labelledby="changepasswordLabel"
+        aria-hidden="true" style="background-color: #191c2487;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: #191C24;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changepasswordLabel">Chagne your password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form class="ml-3" action="{% url 'change_password' %}" method="post">
+                            {% csrf_token %}
+                          <div class="form-group">
+                            <input type="text" class="form-control" placeholder="username" name="username" value="{{request.user.username}}" disabled> 
+                          </div>
+                          <div class="form-group">
+                            <input type="password" class="form-control" placeholder="password" name="password">
+                          </div>
+                          <button type="submit" class="btn btn-sm btn-primary">change password</button>
+                        </form>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -11,16 +11,16 @@
 {% endblock tables %}
 {% block notifications %}
   {% if history != 0 %}
-  {% for message in historys %}
-  <a href="#" class="dropdown-item">
-    <h6 class="fw-normal mb-0">{{message.message}}</h6>
-    <small>{{message.date}}</small>
-  </a>
-  <hr class="dropdown-divider">
-  {% endfor %}
+    {% for message in historys %}
+    <a href="{% url 'history' %}" class="dropdown-item">
+      <h6 class="fw-normal mb-0">{{message.message}}</h6>
+      <small>{{message.date}}</small>
+    </a>
+    <hr class="dropdown-divider">
+    {% endfor %}
   {% else %}
-  <p class="text-center">Notifications Empty</p>
-{% endif %}
+    <p class="text-center">Notifications Empty</p>
+  {% endif %}
 {% endblock notifications %}
 
 {% block body %}

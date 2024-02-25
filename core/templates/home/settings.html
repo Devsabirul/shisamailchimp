@@ -1,0 +1,62 @@
+{% extends "base/base.html" %}
+{% block title %}Add Email{% endblock title %}
+{% block notifications %}
+  {% if history != 0 %}
+    {% for message in historys %}
+    <a href="{% url 'history' %}" class="dropdown-item">
+      <h6 class="fw-normal mb-0">{{message.message}}</h6>
+      <small>{{message.date}}</small>
+    </a>
+    <hr class="dropdown-divider">
+    {% endfor %}
+  {% else %}
+    <p class="text-center">Notifications Empty</p>
+  {% endif %}
+{% endblock notifications %}
+{% block tables %}
+    {% for category in category %}
+    <li>
+        <a href="category/{{category}}" class="dropdown-item">{{category}}</a>
+    </li>
+    {% endfor %}
+{% endblock tables %}
+{% block body %}
+ <!-- Blank Start -->
+ <div class="container-fluid pt-4 px-4">
+  <div class="card add_email_table overflow-auto">
+    <div class="card-body">
+      <h5 class="card-title">Settings <span>| update information </span></h5>
+      <hr>
+      <div>
+        <p class="text-decoration-underline">Chagne user information:</p>
+        <form class="ml-3">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="username" name="username">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="name" name="name">
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="email" name="email">
+          </div>
+          <button type="submit" class="btn btn-sm btn-primary">change save</button>
+        </form>
+      </div>
+      <div class="mt-3">
+        <p class="">Chagne your password:</p>
+        <form class="ml-3">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="username" name="username" value="{{request.user.username}}" disabled> 
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="password" name="password">
+          </div>
+          <button type="submit" class="btn btn-sm btn-primary">change password</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Blank End -->
+
+{% endblock body %}

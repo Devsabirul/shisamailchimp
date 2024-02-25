@@ -128,6 +128,16 @@ a.dropdown-item h6 {
 
 /* summary end  */
 
+/* notification  */
+.notifications {
+    max-height: 12em;
+    overflow: scroll;
+}
+
+a.hr {
+    border-top: 2px solid rgb(252 251 251 / 25%);
+}
+
 @media only screen and (max-width: 600px) {
     input.dataTable-input {
         width: 12em;
