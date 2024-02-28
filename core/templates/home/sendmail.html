@@ -36,7 +36,7 @@
           {% csrf_token %}
           <div class="mb-3">
             <label for="from" class="form-label">From</label>
-            <input name="from" type="email" value="devsabirul8080@gmail.com" class="form-control" id="from"
+            <input name="from" type="email" value="{{EMAIL_USER}}" class="form-control" id="from"
               aria-describedby="emailHelp" disabled>
           </div>
           <div class="mb-3">
@@ -56,9 +56,9 @@
             <label for="from" class="form-label">Email Message body</label>
             <textarea name="body" id="summernote" cols="30" rows="10"></textarea>
           </div>
-          <button type="submit" class="btn btn_ btn-success">Send</button>
-          <button class="ml-1 btn btn-light btn_">
-            <a  href="/">Cancel</a>
+          <button type="submit" class="btn btn_ btn-primary mt-2">Send</button>
+          <button class="ml-1 btn btn-light btn_ mt-2">
+            <a  href="{% url 'HOME' %}">Cancel</a>
           </button>
         </form>
       </div>

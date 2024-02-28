@@ -8,6 +8,7 @@ from .models import *
 from .forms import *
 import pandas as pd
 import os
+from django.conf import settings
 
 
 def home(request):
@@ -51,8 +52,10 @@ def sendMail(request):
     context = {
         'category': uCategory,
         'historys': historys,
-        'history': len(history)
+        'history': len(history),
+        'EMAIL_USER':settings.EMAIL_USER
     }
+
     if request.method == 'POST':
         from_ = request.POST.get('from')
         get_to = request.POST.get('to')
@@ -67,7 +70,7 @@ def sendMail(request):
             email.send()
             
             history = MessageSendHistory(
-                message="Message sent successfully", category=to.category)
+                message="Message sent successfully", category=to.category,topic=subject)
             history.save()
         
     return render(request, 'home/sendmail.html', context)
@@ -140,13 +143,13 @@ def addemail(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             category = form.cleaned_data['category'].upper()
-            data = EmailAdd(email=email, category=category)
+            data = EmailAdd(email=email, category=category,author=request.user)
             data.save()
             return redirect('/add-email')
     return render(request, 'home/addemail.html', context)
 
 @login_required(login_url='signin')
-def settings(request):
+def settings_(request):
     obj = EmailAdd.objects.all()
     uCategory = dict()
     for unique in obj:
@@ -169,10 +172,7 @@ def update_user(request):
             user.first_name = name
             user.email = email
             user.save()
-            notification = MessageSendHistory(
-                message="User update successfully", category="User Update")
-            notification.save()
-        return redirect("history")
+            return redirect("HOME")
     else:
         return redirect("signin")
 
@@ -184,10 +184,7 @@ def change_password(request):
             user = User.objects.get(username=request.user.username)
             user.set_password(password)
             user.save()
-            notification = MessageSendHistory(
-                message="Password change successfully", category="chagne password")
-            notification.save()
-        return redirect("history")
+            return redirect("HOME")
     else:
         return redirect("signin")
 

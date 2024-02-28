@@ -1,60 +1,62 @@
 {% extends 'base/base.html' %}
 {% block title %}Tables{% endblock title %}
 {% block notifications %}
-  {% if history != 0 %}
-    {% for message in historys %}
-    <a href="{% url 'history' %}" class="dropdown-item">
-      <h6 class="fw-normal mb-0">{{message.message}}</h6>
-      <small>{{message.date}}</small>
-    </a>
-    <hr class="dropdown-divider">
-    {% endfor %}
-  {% else %}
-    <p class="text-center">Notifications Empty</p>
-  {% endif %}
+{% if history != 0 %}
+{% for message in historys %}
+<a href="{% url 'history' %}" class="dropdown-item">
+  <h6 class="fw-normal mb-0">{{message.message}}</h6>
+  <small>{{message.date}}</small>
+</a>
+<hr class="dropdown-divider">
+{% endfor %}
+{% else %}
+<p class="text-center">Notifications Empty</p>
+{% endif %}
 {% endblock notifications %}
 {% block tables %}
 {% for category in category %}
-  <li>
-    <a href="category/{{category}}" class="dropdown-item">{{category}}</a>
-  </li>
+<li>
+  <a href="category/{{category}}" class="dropdown-item">{{category}}</a>
+</li>
 {% endfor %}
 
 {% endblock tables %}
 {% block body %}
 <div class="container-fluid pt-4 px-4">
-    <div class="row mt-5">
-        <div class="col-12">
-          <div class="card add_email_table overflow-auto">
-            <div class="card-body">
-              <h5 class="card-title">History <span>| List </span></h5>
-              <table class="table table-borderless datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Message</th>
-                    <th scope="col">Category</th>
-                    <th style="text-align: center;" scope="col">Date</th>
-                    <th style="text-align: center;" scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for history in historys %}
-                  <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{history.message}}</td>
-                    <td>{{history.category}}</td>
-                    <td style="text-align: center;" >{{history.date}}</td>
-                    <td style="text-align: center;">
-                      <a href="/historydelete/{{history.id}}" class="btn btn-sm btn-danger ">Delete</a>
-                    </td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            </div>
-          </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card add_email_table overflow-auto">
+        <div class="card-body">
+          <h5 class="card-title">History <span>| List </span></h5>
+          <table class="table table-borderless datatable">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Message</th>
+                <th scope="col">Topic</th>
+                <th scope="col">Category</th>
+                <th style="text-align: center;" scope="col">Date</th>
+                <th style="text-align: center;" scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for history in historys %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{history.message}}</td>
+                <td>{{history.topic|truncatechars:18}}</td>
+                <td>{{history.category}}</td>
+                <td style="text-align: center;">{{history.date}}</td>
+                <td style="text-align: center;">
+                  <a href="/historydelete/{{history.id}}" class="btn btn-sm btn-danger ">Delete</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
       </div>
+    </div>
+  </div>
 </div>
 {% endblock body %}

@@ -6,7 +6,7 @@ class AddEmailForm(forms.ModelForm):
 
     class Meta:
         model = EmailAdd
-        fields = "__all__"
+        exclude =('author',)
         widgets = {
             "email": forms.EmailInput(attrs={'class': 'form-control mb-3'}),
             "category": forms.TextInput(attrs={'class': 'form-control mb-3'})
